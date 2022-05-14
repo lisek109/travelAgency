@@ -17,8 +17,8 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-   @Enumerated(EnumType.STRING)
-   private Continents continents;
+    @Enumerated(EnumType.STRING)
+    private Continents continents;
     @OneToMany
     private List<City> cities;
 }
