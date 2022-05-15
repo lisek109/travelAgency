@@ -1,6 +1,7 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.City;
+import com.project.travelAgency.entities.Tour;
 import com.project.travelAgency.repository.CityRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,6 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +21,11 @@ import static org.mockito.ArgumentMatchers.any;
 @ExtendWith(MockitoExtension.class)
 class CityServiceTest {
 
-    private static final City CITY = new City(1L, "Gdańsk");
+    private static  List<Tour> TOURS = Arrays.asList(new Tour());
+    private static final City CITY = new City(1L, "Dublin", TOURS, TOURS);
     private static final List<City> CITIES = List.of(CITY, CITY);
+
+
     @Mock
     private CityRepo cityRepo;
 
