@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -15,6 +17,12 @@ public class City {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @OneToMany(mappedBy = "fromCity")
+    private List<Tour> tours;
+    @OneToMany(mappedBy = "toCity")
+    private List<Tour> toursTo;
+
+
 
 
 
