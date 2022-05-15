@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,6 +17,17 @@ public class Tour {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
+    private City fromCity;
+    @ManyToOne
+    private City toCity;
+    private Short daysNumber;
+    @Enumerated(value = EnumType.STRING)
+    private BoardType boardType;
+    private Integer adultPrice;
+    private Integer childPrice;
+    private Short numberOfAdultSeats;
+    private Short numberOfChildSeats;
 
-    private String name;
+
 }
