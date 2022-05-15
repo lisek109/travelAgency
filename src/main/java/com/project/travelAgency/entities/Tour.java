@@ -17,11 +17,17 @@ public class Tour {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
     @ManyToOne
     private City fromCity;
     @ManyToOne
     private City toCity;
     private Short daysNumber;
+    @Enumerated(value = EnumType.STRING)
+    private BoardType boardType;
+    private Integer adultPrice;
+    private Integer childPrice;
+    private Short numberOfAdultSeats;
+    private Short numberOfChildSeats;
+
 
 }

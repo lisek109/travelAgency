@@ -17,10 +17,10 @@ public class City {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "fromCity")
-    private List<Tour> tours;
-    @OneToMany(mappedBy = "toCity")
-    private List<Tour> toursTo;
+  //  @OneToMany
+  //  private List<Tour> tours;
+  //  @OneToMany
+  //  private List<Tour> toursTo;
 
 
 
