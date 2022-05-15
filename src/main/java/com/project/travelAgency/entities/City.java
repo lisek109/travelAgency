@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -19,6 +20,10 @@ public class City {
     private Long id;
     @Column(unique = true)
     private String name;
+    @OneToMany
+    private List<Tour> fromTour;
+    @OneToMany
+    private List<Tour> toTour;
 
 
     @Override
