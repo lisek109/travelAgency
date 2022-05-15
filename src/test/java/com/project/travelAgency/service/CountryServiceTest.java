@@ -2,6 +2,7 @@ package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.City;
 import com.project.travelAgency.entities.Country;
+import com.project.travelAgency.entities.Tour;
 import com.project.travelAgency.repository.CountryRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +21,8 @@ import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 class CountryServiceTest {
-    private static final City CITY = new City(1L, "Gdańsk");
+    private static  List<Tour> TOURS = Arrays.asList(new Tour());
+    private static final City CITY = new City(1L, "Gdańsk", TOURS, TOURS);
     private static final Country COUNTRY = new Country(1L, "Poland", EUROPE, List.of(CITY, CITY));
     private static final List<Country> COUNTRIES = List.of(COUNTRY, COUNTRY);
 
