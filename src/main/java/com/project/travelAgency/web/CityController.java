@@ -21,13 +21,15 @@ public class CityController {
     }
 
     @GetMapping
-    public List<City> findAll() {
-        return cityService.findAll();
+    public ResponseEntity<List<City>> findAll() {
+
+        return ResponseEntity.ok(cityService.findAll());
     }
 
 
     @PostMapping
     public ResponseEntity<City> save(@RequestBody final City city) {
+
         return ResponseEntity.ok(cityService.save(city));
     }
 

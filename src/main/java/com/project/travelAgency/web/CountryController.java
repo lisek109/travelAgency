@@ -20,8 +20,8 @@ public class CountryController {
     }
 
     @GetMapping
-    public List<Country> findAll() {
-        return countryService.findAll();
+    public ResponseEntity<List<Country>> findAll() {
+        return ResponseEntity.ok(countryService.findAll());
     }
 
 

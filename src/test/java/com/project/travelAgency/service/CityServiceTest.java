@@ -4,9 +4,12 @@ import com.project.travelAgency.entities.Airport;
 import com.project.travelAgency.entities.City;
 import com.project.travelAgency.entities.Hotel;
 import com.project.travelAgency.entities.Tour;
+import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.CityRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -17,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -24,10 +28,10 @@ import static org.mockito.ArgumentMatchers.any;
 class CityServiceTest {
     private static final Hotel HOTEL = new Hotel(1L, "Orbis", (short) 3);
     private static final Airport AIRPORT = new Airport(1L, "Okęcie");
-    private static final List<Hotel> HOTELS =List.of(HOTEL,HOTEL);
-    private static final List<Airport> AIRPORTS =List.of(AIRPORT,AIRPORT);
+    private static final List<Hotel> HOTELS = List.of(HOTEL, HOTEL);
+    private static final List<Airport> AIRPORTS = List.of(AIRPORT, AIRPORT);
     private static final List<Tour> TOURS = Arrays.asList(new Tour());
-    private static final City CITY = new City(1L, "Dublin", TOURS, TOURS,AIRPORTS, HOTELS);
+    private static final City CITY = new City(1L, "Dublin", TOURS, TOURS, AIRPORTS, HOTELS);
     private static final List<City> CITIES = List.of(CITY, CITY);
 
 
@@ -78,5 +82,17 @@ class CityServiceTest {
         //then
         assertTrue(result);
         //Nie jestem pewien czy to jest dobrze
+    }
+
+    @ParameterizedTest
+    @ValueSource(longs = {1L, 5L, 7L})
+    void shouldThrowExceptionIfIdNumberDoesNotExist(Long id) {
+        Mockito.when(cityRepo.findById(id)).thenReturn(Optional.empty());
+        City city = new City();
+        city.setName("No ID found");
+        City result = cityService.findById(id);
+        assertEquals(result.toString(), city.toString());
+
+
     }
 }
