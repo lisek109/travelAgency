@@ -1,8 +1,6 @@
 package com.project.travelAgency.service;
 
-import com.project.travelAgency.entities.City;
-import com.project.travelAgency.entities.Country;
-import com.project.travelAgency.entities.Tour;
+import com.project.travelAgency.entities.*;
 import com.project.travelAgency.repository.CountryRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,8 +19,12 @@ import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 class CountryServiceTest {
+    private static final Hotel HOTEL = new Hotel(1L, "Orbis", (short) 3);
+    private static final Airport AIRPORT = new Airport(1L, "Okęcie");
+    private static final List<Hotel> HOTELS =List.of(HOTEL,HOTEL);
+    private static final List<Airport> AIRPORTS =List.of(AIRPORT,AIRPORT);
     private static  List<Tour> TOURS = Arrays.asList(new Tour());
-    private static final City CITY = new City(1L, "Gdańsk", TOURS, TOURS);
+    private static final City CITY = new City(1L, "Gdańsk", TOURS, TOURS, AIRPORTS, HOTELS );
     private static final Country COUNTRY = new Country(1L, "Poland", EUROPE, List.of(CITY, CITY));
     private static final List<Country> COUNTRIES = List.of(COUNTRY, COUNTRY);
 
