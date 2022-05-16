@@ -33,6 +33,16 @@ class HotelServiceTest {
     private HotelService hotelService;
 
     @Test
+    void shouldSaveHotel() {
+        //given
+        Mockito.when(hotelRepo.save(any())).thenReturn(HOTEL);
+        //when
+        Hotel result = hotelService.save(HOTEL);
+        //then
+        assertEquals(HOTEL, result);
+    }
+
+    @Test
     void shouldReturnHotelById() {
         //given
         Mockito.when(hotelRepo.getById(any())).thenReturn(HOTEL);

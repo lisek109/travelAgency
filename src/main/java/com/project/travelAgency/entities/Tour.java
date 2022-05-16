@@ -22,8 +22,8 @@ public class Tour {
     private BoardType boardType;
     private Integer adultPrice;
     private Integer childPrice;
-    private Short numberOfAdultSeats;
-    private Short numberOfChildSeats;
+    private Integer numberOfAdultSeats;
+    private Integer numberOfChildSeats;
 
 
 }
