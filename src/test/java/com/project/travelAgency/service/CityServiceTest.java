@@ -1,6 +1,8 @@
 package com.project.travelAgency.service;
 
+import com.project.travelAgency.entities.Airport;
 import com.project.travelAgency.entities.City;
+import com.project.travelAgency.entities.Hotel;
 import com.project.travelAgency.entities.Tour;
 import com.project.travelAgency.repository.CityRepo;
 import org.junit.jupiter.api.Test;
@@ -20,9 +22,12 @@ import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 class CityServiceTest {
-
-    private static  List<Tour> TOURS = Arrays.asList(new Tour());
-    private static final City CITY = new City(1L, "Dublin", TOURS, TOURS);
+    private static final Hotel HOTEL = new Hotel(1L, "Orbis", (short) 3);
+    private static final Airport AIRPORT = new Airport(1L, "Okęcie");
+    private static final List<Hotel> HOTELS =List.of(HOTEL,HOTEL);
+    private static final List<Airport> AIRPORTS =List.of(AIRPORT,AIRPORT);
+    private static final List<Tour> TOURS = Arrays.asList(new Tour());
+    private static final City CITY = new City(1L, "Dublin", TOURS, TOURS,AIRPORTS, HOTELS);
     private static final List<City> CITIES = List.of(CITY, CITY);
 
 

@@ -22,9 +22,15 @@ public class CityService {
     }
 
     public City findById(Long id) {
-
-        return cityRepo.findById(id).orElseThrow(() -> new RuntimeException("City id "+id+" not exist"));
+        try {
+            return cityRepo.findById(id).orElseThrow(RuntimeException::new);
+        } catch (RuntimeException y) {
+            City city=new City();
+            city.setName("No ID found");
+            return city;
+        }
     }
+
 
     public boolean deleteById(Long id) {
         cityRepo.delete(findById(id));

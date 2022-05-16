@@ -1,5 +1,6 @@
 package com.project.travelAgency.service;
 
+import com.project.travelAgency.entities.City;
 import com.project.travelAgency.entities.Country;
 import com.project.travelAgency.repository.CountryRepo;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +23,18 @@ public class CountryService {
     }
 
     public Country findById(Long id) {
-        return countryRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Country not exist with id: " + id));
+        try {
+            return countryRepo.findById(id).orElseThrow(RuntimeException::new);
+        } catch (RuntimeException y) {
+            Country country = new Country();
+            country.setName("No ID found");
+            return country;
+        }
     }
+
     public boolean deleteById(Long id) {
         countryRepo.delete(findById(id));
         return true;
     }
 }
-
 
