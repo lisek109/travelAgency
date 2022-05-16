@@ -27,7 +27,7 @@ public class HotelService {
     }
 
     public boolean deleteById(Long id) {
-        hotelRepo.deleteById(id);
+        hotelRepo.delete(findById(id));
         return true;
     }
 }

@@ -67,8 +67,6 @@ class CityServiceTest {
         City result = cityService.findById(1L);
         //then
         assertEquals(CITY, result);
-
-
     }
 
     @Test

@@ -32,7 +32,7 @@ public class AirportService {
     }
 
     public boolean deleteById(Long id) {
-         airportRepo.deleteById(id);
+         airportRepo.delete(findById(id));
         return true;
     }
 }

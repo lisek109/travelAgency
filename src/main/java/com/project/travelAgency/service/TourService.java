@@ -26,7 +26,7 @@ public class TourService {
     }
 
     public boolean deleteById(Long id) {
-        tourRepo.deleteById(id);
+        tourRepo.delete(findById(id));
         return true;
     }
 
