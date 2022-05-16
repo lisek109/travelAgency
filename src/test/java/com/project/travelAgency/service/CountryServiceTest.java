@@ -4,6 +4,8 @@ import com.project.travelAgency.entities.*;
 import com.project.travelAgency.repository.CountryRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -21,10 +23,10 @@ import static org.mockito.ArgumentMatchers.any;
 class CountryServiceTest {
     private static final Hotel HOTEL = new Hotel(1L, "Orbis", (short) 3);
     private static final Airport AIRPORT = new Airport(1L, "Okęcie");
-    private static final List<Hotel> HOTELS =List.of(HOTEL,HOTEL);
-    private static final List<Airport> AIRPORTS =List.of(AIRPORT,AIRPORT);
-    private static  List<Tour> TOURS = Arrays.asList(new Tour());
-    private static final City CITY = new City(1L, "Gdańsk", TOURS, TOURS, AIRPORTS, HOTELS );
+    private static final List<Hotel> HOTELS = List.of(HOTEL, HOTEL);
+    private static final List<Airport> AIRPORTS = List.of(AIRPORT, AIRPORT);
+    private static List<Tour> TOURS = Arrays.asList(new Tour());
+    private static final City CITY = new City(1L, "Gdańsk", TOURS, TOURS, AIRPORTS, HOTELS);
     private static final Country COUNTRY = new Country(1L, "Poland", EUROPE, List.of(CITY, CITY));
     private static final List<Country> COUNTRIES = List.of(COUNTRY, COUNTRY);
 
@@ -76,5 +78,15 @@ class CountryServiceTest {
         boolean result = countryService.deleteById(1L);
         //then
         assertTrue(result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(longs = {1L, 5L, 7L})
+    void shouldThrowExceptionIfIdNumberDoesNotExist(Long id) {
+        Mockito.when(countryRepo.findById(id)).thenReturn(Optional.empty());
+        City city = new City();
+        city.setName("No ID found");
+        Country result = countryService.findById(id);
+        assertEquals(result.toString(), city.toString());
     }
 }
