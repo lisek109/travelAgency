@@ -6,6 +6,8 @@ import com.project.travelAgency.repository.HotelRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class HotelService {
@@ -18,6 +20,10 @@ public class HotelService {
 
     public Hotel findById(Long id) {
         return hotelRepo.findById(id).orElseThrow(() -> new RuntimeException("No hotel with given id"));
+    }
+
+    public List<Hotel> findAll() {
+        return hotelRepo.findAll();
     }
 
     public boolean deleteById(Long id) {

@@ -18,7 +18,13 @@ public class AirportService {
     }
 
     public Airport findById(Long id) {
-        return airportRepo.findById(id).orElseThrow(() -> new RuntimeException("No airport with given id"));
+        try {
+         return airportRepo.findById(id).orElseThrow(RuntimeException::new);
+        } catch (RuntimeException r) {
+            Airport airport = new Airport();
+            airport.setName("No airport with given id");
+            return airport;
+        }
     }
 
     public List<Airport> findAll() {
