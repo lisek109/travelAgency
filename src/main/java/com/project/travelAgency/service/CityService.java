@@ -1,6 +1,7 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.City;
+import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.CityRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class CityService {
 
     public City findById(Long id) {
         try {
-            return cityRepo.findById(id).orElseThrow(RuntimeException::new);
-        } catch (RuntimeException y) {
+            return cityRepo.findById(id).orElseThrow(()->new NoIdException("No ID found"));
+        } catch (NoIdException y) {
             City city=new City();
             city.setName("No ID found");
             return city;
