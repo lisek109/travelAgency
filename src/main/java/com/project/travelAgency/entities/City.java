@@ -24,6 +24,10 @@ public class City {
     private List<Tour> fromTour;
     @OneToMany
     private List<Tour> toTour;
+    @OneToMany
+    private List<Airport> airports;
+    @OneToMany
+    private List<Hotel> hotels;
 
 
     @Override

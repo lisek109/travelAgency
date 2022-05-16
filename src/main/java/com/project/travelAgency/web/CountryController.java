@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/destination/country")
-public class CountryControler {
+public class CountryController {
     private final CountryService countryService;
 
     @GetMapping("/{id}")
