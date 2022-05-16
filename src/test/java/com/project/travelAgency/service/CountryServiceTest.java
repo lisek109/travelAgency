@@ -84,9 +84,9 @@ class CountryServiceTest {
     @ValueSource(longs = {1L, 5L, 7L})
     void shouldThrowExceptionIfIdNumberDoesNotExist(Long id) {
         Mockito.when(countryRepo.findById(id)).thenReturn(Optional.empty());
-        City city = new City();
-        city.setName("No ID found");
+        Country country = new Country();
+        country.setName("No ID found");
         Country result = countryService.findById(id);
-        assertEquals(result.toString(), city.toString());
+        assertEquals(result.toString(), country.toString());
     }
 }
