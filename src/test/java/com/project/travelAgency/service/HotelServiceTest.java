@@ -1,6 +1,7 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.Hotel;
+import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.HotelRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -58,7 +59,7 @@ class HotelServiceTest {
     void shouldThrowExceptionIfIdNumberDoesNotExist(Long id) {
         Mockito.when(hotelRepo.findById(id)).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class,
+        assertThrows(NoIdException.class,
                 () -> hotelService.findById(id),
                 "No hotel with given id");
     }

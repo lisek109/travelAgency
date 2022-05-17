@@ -2,6 +2,7 @@ package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.BoardType;
 import com.project.travelAgency.entities.Tour;
+import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.TourRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,6 +38,7 @@ class TourServiceTest {
         //then
         assertEquals(TOUR, result);
     }
+
     @Test
     void shouldReturnTourById() {
         //given
@@ -52,8 +54,7 @@ class TourServiceTest {
         //given
         Mockito.when(tourRepo.findById(1L)).thenReturn(Optional.empty());
         //when & then
-        assertThrows(RuntimeException.class,
+        assertThrows(NoIdException.class,
                 () -> tourService.findById(1L));
-
     }
 }

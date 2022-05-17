@@ -1,13 +1,8 @@
 package com.project.travelAgency.exception;
 
-public class NoIdException extends Exception {
+public class NoIdException extends RuntimeException {
 
-    public NoIdException(String no_id_found) {
-
-    }
-
-    @Override
-    public String toString() {
-        return "NoIdException";
+    public NoIdException(String message) {
+        super(message);
     }
 }

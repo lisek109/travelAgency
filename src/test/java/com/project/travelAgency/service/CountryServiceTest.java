@@ -1,6 +1,7 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.*;
+import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.CountryRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -83,10 +84,10 @@ class CountryServiceTest {
     @ParameterizedTest
     @ValueSource(longs = {1L, 5L, 7L})
     void shouldThrowExceptionIfIdNumberDoesNotExist(Long id) {
+        //given
         Mockito.when(countryRepo.findById(id)).thenReturn(Optional.empty());
-        Country country = new Country();
-        country.setName("No ID found");
-        Country result = countryService.findById(id);
-        assertEquals(result.toString(), country.toString());
+        //when & then
+        assertThrows(NoIdException.class,
+                () -> countryService.findById(id));
     }
 }

@@ -50,7 +50,7 @@ class CityServiceTest {
         City result = cityService.save(CITY);
         //then
         assertEquals(CITY, result);
-        //Czy to nie jest masło maślane?
+        //Czy to nie jest masło maślane? Generealnie nie powinno sie testowac metod z biblioteki
     }
 
     @Test
@@ -87,12 +87,10 @@ class CityServiceTest {
     @ParameterizedTest
     @ValueSource(longs = {1L, 5L, 7L})
     void shouldThrowExceptionIfIdNumberDoesNotExist(Long id) {
+        //given
         Mockito.when(cityRepo.findById(id)).thenReturn(Optional.empty());
-        City city = new City();
-        city.setName("No ID found");
-        City result = cityService.findById(id);
-        assertEquals(result.toString(), city.toString());
-
-
+        //when & then
+        assertThrows(NoIdException.class,
+                () -> cityService.findById(id));
     }
 }
