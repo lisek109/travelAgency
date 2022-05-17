@@ -24,7 +24,7 @@ public class CityService {
 
     public City findById(Long id) {
         return cityRepo.findById(id)
-                .orElseThrow(()-> new NoIdException("No city with given id found"));
+                .orElseThrow(()-> new NoIdException("City with given id not found"));
     }
 
 

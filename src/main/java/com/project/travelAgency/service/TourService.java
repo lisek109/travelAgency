@@ -20,7 +20,7 @@ public class TourService {
 
     public Tour findById(Long id) {
         return tourRepo.findById(id)
-                .orElseThrow(()-> new NoIdException("No tour with given id found"));
+                .orElseThrow(()-> new NoIdException("Tour with given id not found"));
     }
 
     public List<Tour> findAll() {

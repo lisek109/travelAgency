@@ -20,7 +20,7 @@ public class AirportService {
 
     public Airport findById(Long id) {
         return airportRepo.findById(id)
-                .orElseThrow(()-> new NoIdException("No airport with given id found"));
+                .orElseThrow(()-> new NoIdException("Airport with given id not found"));
     }
 
     public List<Airport> findAll() {

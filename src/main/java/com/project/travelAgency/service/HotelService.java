@@ -21,7 +21,7 @@ public class HotelService {
 
     public Hotel findById(Long id) {
         return hotelRepo.findById(id)
-                .orElseThrow(()-> new NoIdException("No hotel with given id found"));
+                .orElseThrow(()-> new NoIdException("Hotel with given id not found"));
     }
 
     public List<Hotel> findAll() {

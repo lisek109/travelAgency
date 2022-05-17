@@ -18,7 +18,7 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/{id}")
-    public ResponseEntity<User> getById(@PathVariable final Long id) {
+    public ResponseEntity<User> getById(@PathVariable final String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
 
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+    public ResponseEntity<Boolean> delete(@PathVariable String id) {
         return ResponseEntity.ok(userService.deleteById(id));
     }
 }
