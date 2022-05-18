@@ -1,6 +1,7 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.User;
+import com.project.travelAgency.entities.UserRole;
 import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -15,14 +16,16 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepo userRepo;
+    private static final List<UserRole> USER= List.of(new UserRole(2L, "USER"));
 
     public User save(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+        user.setUserRoles(USER);
         return userRepo.save(user);
     }
 
-    public User findById(String id) {
+    public User findById(Long id) {
         return userRepo.findById(id)
                 .orElseThrow(() -> new NoIdException("User with given id not found"));
     }
@@ -31,7 +34,7 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public boolean deleteById(String id) {
+    public boolean deleteById(Long id) {
         userRepo.deleteById(id);
         return true;
     }

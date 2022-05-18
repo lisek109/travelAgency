@@ -21,7 +21,7 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getById(@PathVariable final String id) {
+    public ResponseEntity<UserDTO> getById(@PathVariable final Long id) {
         return ResponseEntity.ok(userMapper.toDTO(userService.findById(id)));
     }
 
@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return ResponseEntity.ok(userService.deleteById(id));
     }
 }
