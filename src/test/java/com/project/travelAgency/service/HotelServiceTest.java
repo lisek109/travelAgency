@@ -61,7 +61,7 @@ class HotelServiceTest {
 
         assertThrows(NoIdException.class,
                 () -> hotelService.findById(id),
-                "No hotel with given id");
+                "Hotel with given id not found");
     }
 
     @Test
