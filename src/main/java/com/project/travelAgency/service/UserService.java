@@ -22,7 +22,7 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public User findById(String id) {
+    public User findById(Long id) {
         return userRepo.findById(id)
                 .orElseThrow(() -> new NoIdException("User with given id not found"));
     }
@@ -31,7 +31,7 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public boolean deleteById(String id) {
+    public boolean deleteById(Long id) {
         userRepo.deleteById(id);
         return true;
     }

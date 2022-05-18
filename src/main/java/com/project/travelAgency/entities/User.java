@@ -28,7 +28,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Range(min = 5, max = 30, message = "User name length should be between 5 and 30 characters")
+   @Range(min = 5L, max = 30L, message = "User name length should be between 5 and 30 characters")
     private String userName;
     @NotNull
     @Length(min = 8)

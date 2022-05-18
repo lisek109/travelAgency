@@ -21,22 +21,17 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getById(@PathVariable final String id) {
+    public ResponseEntity<UserDTO> getById(@PathVariable final Long id) {
         return ResponseEntity.ok(userMapper.toDTO(userService.findById(id)));
     }
 
-    @GetMapping
-    public List<User> findALl() {
-        return userService.findAll();
-    }
-
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@Valid @RequestBody User user) {
-        return ResponseEntity.ok(userService.save(user));
+    public ResponseEntity<UserDTO> signup(@Valid @RequestBody User user) {
+        return ResponseEntity.ok(userMapper.toDTO(userService.save(user)));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable String id) {
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return ResponseEntity.ok(userService.deleteById(id));
     }
 }
