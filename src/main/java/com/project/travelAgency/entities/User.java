@@ -1,7 +1,10 @@
 package com.project.travelAgency.entities;
 
 
+import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,49 +26,52 @@ public class User implements UserDetails {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Range(min = 5, max = 30, message = "User name length should be between 5 and 30 characters")
     private String userName;
+    @NotNull
+    @Length(min = 8)
     private String password;
-
-    @Enumerated(EnumType.STRING)
     @OneToMany
     private List<UserRole> userRoles;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return userRoles.stream().map(u -> u.getUserRoleEnum().toString()).map(SimpleGrantedAuthority::new)
+        return userRoles.stream()
+                .map(UserRole::getRole).map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return userName;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override

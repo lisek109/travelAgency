@@ -7,13 +7,10 @@ import javax.persistence.*;
 @Entity
 @Data
 public class UserRole {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Enumerated(EnumType.STRING)
-    private UserRoleEnum userRoleEnum;
+    private String role;
 
 
 }
