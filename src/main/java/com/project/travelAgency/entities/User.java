@@ -1,6 +1,7 @@
 package com.project.travelAgency.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -10,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -24,17 +26,22 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class User implements UserDetails {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Range(min = 5L, max = 30L, message = "User name length should be between 5 and 30 characters")
+    //@Range(min = 5L, max = 30L, message = "User name length should be between 5 and 30 characters")
     @Column(unique = true)
     private String userName;
     @NotNull
     @Length(min = 8)
     private String password;
-    @OneToMany
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_user_role",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_role_id", referencedColumnName = "id")})
     private List<UserRole> userRoles;
 
 

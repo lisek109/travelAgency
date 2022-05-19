@@ -31,6 +31,8 @@ public class UserAdminController {
     public List<User> findALl() {
         return userService.findAll();
     }
+
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @PatchMapping("/signup/{id}")
     public ResponseEntity<String> giveAdminRole(@RequestBody User user, @PathVariable("id") Long id) {

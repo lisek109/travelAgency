@@ -12,11 +12,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService  {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepo userRepo;
-    private static final List<UserRole> USER= List.of(new UserRole(2L, "USER"));
+    private static final List<UserRole> USER= List.of(new UserRole(1L, "USER"));
+
 
     public User save(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
@@ -38,4 +39,5 @@ public class UserService {
         userRepo.deleteById(id);
         return true;
     }
+
 }

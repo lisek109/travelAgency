@@ -1,6 +1,8 @@
 package com.project.travelAgency.web;
 
 import com.project.travelAgency.service.UserDetailService;
+import com.project.travelAgency.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,9 +29,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .httpBasic()
                 .and()
-                .authorizeRequests().antMatchers("/user/**").permitAll()
+                .authorizeRequests().antMatchers("/user/**").permitAll();
 
-        ;
     }
 
     @Override
@@ -39,6 +40,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-}
+        return new BCryptPasswordEncoder();
+    }
 }
