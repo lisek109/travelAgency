@@ -16,13 +16,13 @@ public class UserService  {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepo userRepo;
-    private static final List<UserRole> USER= List.of(new UserRole(1L, "USER"));
+    //private static final List<UserRole> USER= List.of(new UserRole(1L, "USER"));
 
 
     public User save(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        user.setUserRoles(USER);
+       // user.setUserRoles(USER);
         return userRepo.save(user);
     }
 

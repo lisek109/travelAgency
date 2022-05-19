@@ -11,10 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -23,8 +20,15 @@ import java.util.stream.Collectors;
 @ToString
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class User implements UserDetails {
+
+    public User(Long id, String userName, String password) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.userRoles = new ArrayList<>(Arrays.asList(new UserRole(1L, "USER")));
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -17,7 +17,7 @@ import java.util.List;
 public class UserAdminController {
 
     private final UserService userService;
-    private static final List<UserRole> ADMIN = List.of(new UserRole(1L, "ADMIN"));
+    private static final List<UserRole> ADMIN = List.of(new UserRole(2L, "ADMIN"));
 
 
     @PreAuthorize("hasAuthority('ADMIN')")
