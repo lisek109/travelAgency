@@ -18,8 +18,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
 
-    public WebSecurityConfiguration(@Qualifier("userDetailService") final UserDetailService userDetailService) {
-        this.userDetailsService = userDetailService;
+    public WebSecurityConfiguration(@Qualifier("userService") final UserService userService) {
+        this.userDetailsService = userService;
     }
 
     @Override
@@ -38,8 +38,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return userDetailsService;
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

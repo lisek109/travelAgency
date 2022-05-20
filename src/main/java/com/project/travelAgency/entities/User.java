@@ -23,11 +23,10 @@ import java.util.stream.Collectors;
 //@AllArgsConstructor
 public class User implements UserDetails {
 
-    public User(Long id, String userName, String password) {
-        this.id = id;
+    public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        this.userRoles = new ArrayList<>(Arrays.asList(new UserRole(1L, "USER")));
+        //this.userRoles = new ArrayList<>(Arrays.asList(new UserRole(1L, "USER")));
     }
 
     @Id
