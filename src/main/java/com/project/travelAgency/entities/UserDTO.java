@@ -9,10 +9,15 @@ import java.util.List;
 @AllArgsConstructor
 public class UserDTO {
     private Long id;
+    private String userName;
     private List<UserRole> roles;
 
     public Long getId() {
         return id;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     public List<UserRole> getRoles() {

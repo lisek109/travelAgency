@@ -15,6 +15,8 @@ public class UserMapper {
         List<UserRole> roles = user
                 .getUserRoles();
 
-        return new UserDTO(userId, roles);
+        String userName = user.getUsername();
+
+        return new UserDTO(userId, userName, roles);
     }
 }
