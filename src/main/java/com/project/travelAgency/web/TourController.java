@@ -16,15 +16,27 @@ public class TourController {
 
     private final TourService tourService;
 
+    @GetMapping("/city/departure/{city}")
+    public ResponseEntity <List<Tour>> getByDepartureCity(@PathVariable final String city) {
+        return ResponseEntity.ok(tourService.findByFromCityName(city));
+    }
+
+    @GetMapping("/city/arrival/{city}")
+    public ResponseEntity <List<Tour>> getByArrivalCity(@PathVariable final String city) {
+        return ResponseEntity.ok(tourService.findByToCityName(city));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Tour> getById(@PathVariable final Long id) {
         return ResponseEntity.ok(tourService.findById(id));
     }
 
     @GetMapping
-    public List<Tour> findALl() {
-        return tourService.findAll();
+    public ResponseEntity <List<Tour>> findALl() {
+        return ResponseEntity.ok(tourService.findAll());
     }
+
+
 
     @PostMapping
     public ResponseEntity<Tour> save(@RequestBody Tour tour) {

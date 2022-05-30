@@ -32,5 +32,12 @@ public class TourService {
         return true;
     }
 
+    public List<Tour> findByToCityName(String cityName) {
+        return tourRepo.findToursByToCity_Name(cityName);
+    }
 
+
+    public List<Tour> findByFromCityName(String cityName) {
+        return tourRepo.findToursByFromCity_Name(cityName);
+    }
 }

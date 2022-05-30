@@ -1,7 +1,6 @@
 package com.project.travelAgency.service;
 
-import com.project.travelAgency.entities.BoardType;
-import com.project.travelAgency.entities.Tour;
+import com.project.travelAgency.entities.*;
 import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.TourRepo;
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -20,8 +23,17 @@ import static org.mockito.ArgumentMatchers.any;
 @ExtendWith(MockitoExtension.class)
 class TourServiceTest {
 
+    private static final Hotel HOTEL = new Hotel(1L, "Orbis", (short) 3);
+    private static final Airport AIRPORT = new Airport(1L, "Okęcie");
+    private static final List<Hotel> HOTELS = List.of(HOTEL, HOTEL);
+    private static final List<Airport> AIRPORTS = List.of(AIRPORT, AIRPORT);
+    private static final List<Tour> TOURS = Arrays.asList(new Tour());
+    private static final City CITY = new City(1L, "Dublin", TOURS, TOURS, AIRPORTS, HOTELS);
+    private static final City CITY2 = new City(2L, "Moskwa", TOURS, TOURS, AIRPORTS, HOTELS);
+    private static final LocalDate departureDate = LocalDate.of(2022, 07, 12);
+    private static final LocalDate arrivalDate = LocalDate.of(2022, 07, 19);
     private static final Tour TOUR = new Tour
-            (2L, (short) 12, BoardType.BB, 1500, 1100, 34, 8);
+            ( 2L, (short) 12, departureDate, arrivalDate,  BoardType.BB, 1500, 1100, 34, 8, CITY, CITY2);
 
     @Mock
     private TourRepo tourRepo;
