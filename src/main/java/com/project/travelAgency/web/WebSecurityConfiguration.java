@@ -31,22 +31,22 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .mvcMatchers(HttpMethod.GET, "/main/**")
-                .permitAll()
-                .anyRequest().authenticated()
+       // http.authorizeRequests()
+               // .mvcMatchers(HttpMethod.GET, "/main/**")
+               // .permitAll()
+               // .anyRequest().authenticated()
+               // .and()
+               // .httpBasic()
+
+
+
+                http.csrf().disable();
+        http.sessionManagement().sessionCreationPolicy(STATELESS);
+        http.httpBasic()
                 .and()
-                .httpBasic();
-
-
-
-                //csrf().disable();
-       // http.sessionManagement().sessionCreationPolicy(STATELESS);
-       // http.httpBasic()
-                //.and()
-                //.authorizeRequests().antMatchers(HttpMethod.GET, "/user/**").authenticated()
-                //.antMatchers("/user/**")
-                //.permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.GET, "/user/**").authenticated()
+                .antMatchers("/user/**")
+                .permitAll()
 
                 .antMatchers("/user/**").permitAll()
                 .and()
