@@ -39,6 +39,9 @@ public class User implements UserDetails {
     @Length(min = 8)
     private String password;
 
+    @OneToMany
+    private List<TourDTO> tours;
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

@@ -28,12 +28,12 @@ class TourServiceTest {
     private static final List<Hotel> HOTELS = List.of(HOTEL, HOTEL);
     private static final List<Airport> AIRPORTS = List.of(AIRPORT, AIRPORT);
     private static final List<Tour> TOURS = Arrays.asList(new Tour());
-    private static final City CITY = new City(1L, "Dublin", TOURS, TOURS, AIRPORTS, HOTELS);
-    private static final City CITY2 = new City(2L, "Moskwa", TOURS, TOURS, AIRPORTS, HOTELS);
+    private static final City CITY = new City(1L, "Dublin",  AIRPORTS, HOTELS);
+    private static final City CITY2 = new City(2L, "Moskwa",  AIRPORTS, HOTELS);
     private static final LocalDate departureDate = LocalDate.of(2022, 07, 12);
     private static final LocalDate arrivalDate = LocalDate.of(2022, 07, 19);
     private static final Tour TOUR = new Tour
-            ( 2L, (short) 12, departureDate, arrivalDate,  BoardType.BB, 1500, 1100, 34, 8, CITY, CITY2);
+            ( 2L, (short) 12, departureDate, arrivalDate,   1500, 1100, 34, 8, HOTEL, CITY, CITY2);
 
     @Mock
     private TourRepo tourRepo;

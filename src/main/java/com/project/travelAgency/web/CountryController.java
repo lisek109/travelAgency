@@ -5,13 +5,14 @@ import com.project.travelAgency.entities.Country;
 import com.project.travelAgency.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/destination/country")
+@RequestMapping("/travelagency/country")
 public class CountryController {
     private final CountryService countryService;
 
@@ -29,11 +30,13 @@ public class CountryController {
     }
 
 
+    @Secured("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<Country> save(@RequestBody final Country country) {
         return ResponseEntity.ok(countryService.save(country));
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable final Long id) {
         return ResponseEntity.ok(countryService.deleteById(id));

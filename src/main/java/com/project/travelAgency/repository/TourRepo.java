@@ -12,5 +12,7 @@ public interface TourRepo extends JpaRepository<Tour, Long> {
  List<Tour> findToursByToCity_Name(String cityName);
 
 
+
  //List<Tour> findToursBy
+
 }

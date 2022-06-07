@@ -27,7 +27,7 @@ class CountryServiceTest {
     private static final List<Hotel> HOTELS = List.of(HOTEL, HOTEL);
     private static final List<Airport> AIRPORTS = List.of(AIRPORT, AIRPORT);
     private static List<Tour> TOURS = Arrays.asList(new Tour());
-    private static final City CITY = new City(1L, "Gdańsk", TOURS, TOURS, AIRPORTS, HOTELS);
+    private static final City CITY = new City(1L, "Gdańsk",  AIRPORTS, HOTELS);
     private static final Country COUNTRY = new Country(1L, "Poland", EUROPE, List.of(CITY, CITY));
     private static final List<Country> COUNTRIES = List.of(COUNTRY, COUNTRY);
 
