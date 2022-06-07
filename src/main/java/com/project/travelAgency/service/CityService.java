@@ -23,13 +23,8 @@ public class CityService {
     }
 
     public City findById(Long id) {
-        try {
-            return cityRepo.findById(id).orElseThrow(()->new NoIdException("No ID found"));
-        } catch (NoIdException y) {
-            City city=new City();
-            city.setName("No ID found");
-            return city;
-        }
+        return cityRepo.findById(id)
+                .orElseThrow(()-> new NoIdException("City with given id not found"));
     }
 
 

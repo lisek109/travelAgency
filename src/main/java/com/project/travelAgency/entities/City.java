@@ -1,5 +1,6 @@
 package com.project.travelAgency.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -20,10 +21,14 @@ public class City {
     private Long id;
     @Column(unique = true)
     private String name;
-    @OneToMany
-    private List<Tour> fromTour;
-    @OneToMany
-    private List<Tour> toTour;
+
+   // @JsonIgnore
+   // @OneToMany(mappedBy = "fromCity")
+   // private List<Tour> fromTour;
+//
+   // @JsonIgnore
+   // @OneToMany(mappedBy = "toCity")
+   // private List<Tour> toTour;
     @OneToMany
     private List<Airport> airports;
     @OneToMany

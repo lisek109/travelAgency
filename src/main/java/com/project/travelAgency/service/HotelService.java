@@ -2,6 +2,7 @@ package com.project.travelAgency.service;
 
 
 import com.project.travelAgency.entities.Hotel;
+import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.HotelRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,8 @@ public class HotelService {
     }
 
     public Hotel findById(Long id) {
-        return hotelRepo.findById(id).orElseThrow(() -> new RuntimeException("No hotel with given id"));
+        return hotelRepo.findById(id)
+                .orElseThrow(()-> new NoIdException("Hotel with given id not found"));
     }
 
     public List<Hotel> findAll() {
