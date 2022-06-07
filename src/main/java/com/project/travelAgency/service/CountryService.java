@@ -24,8 +24,13 @@ public class CountryService {
     }
 
     public Country findById(Long id) {
-            return countryRepo.findById(id)
-                    .orElseThrow(()-> new NoIdException("Country with given id not found"));
+        try {
+            return countryRepo.findById(id).orElseThrow(()-> new NoIdException("No ID found"));
+        } catch (NoIdException y) {
+            Country country = new Country();
+            country.setName("No ID found");
+            return country;
+        }
     }
 
     public boolean deleteById(Long id) {

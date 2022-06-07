@@ -1,7 +1,6 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.Tour;
-import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.TourRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,8 +18,7 @@ public class TourService {
     }
 
     public Tour findById(Long id) {
-        return tourRepo.findById(id)
-                .orElseThrow(()-> new NoIdException("Tour with given id not found"));
+        return tourRepo.findById(id).orElseThrow(() -> new RuntimeException("No Tour with given id"));
     }
 
     public List<Tour> findAll() {
@@ -32,12 +30,5 @@ public class TourService {
         return true;
     }
 
-    public List<Tour> findByToCityName(String cityName) {
-        return tourRepo.findToursByToCity_Name(cityName);
-    }
 
-
-    public List<Tour> findByFromCityName(String cityName) {
-        return tourRepo.findToursByFromCity_Name(cityName);
-    }
 }
