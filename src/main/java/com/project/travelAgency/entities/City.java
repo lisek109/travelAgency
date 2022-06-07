@@ -17,6 +17,7 @@ import java.util.Objects;
 public class City {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
@@ -30,9 +31,14 @@ public class City {
    // @OneToMany(mappedBy = "toCity")
    // private List<Tour> toTour;
     @OneToMany
+    @JsonIgnore
     private List<Airport> airports;
     @OneToMany
+    @JsonIgnore
     private List<Hotel> hotels;
+    @JsonIgnore
+    @ManyToOne//(mappedBy="country_id")
+    private Country country;
 
 
     @Override

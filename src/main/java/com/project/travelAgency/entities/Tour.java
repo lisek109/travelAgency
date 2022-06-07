@@ -1,6 +1,7 @@
 package com.project.travelAgency.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,9 @@ public class Tour {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
+    private String nameTour;
     private Short daysNumber;
     private LocalDate departure;
     private LocalDate arrival;
@@ -27,6 +30,12 @@ public class Tour {
     private Integer childPrice;
     private Integer numberOfAdultSeatsLeft;
     private Integer numberOfChildSeatsLeft;
+    @OneToOne
+    private Hotel hotel;
+    @OneToOne
+    private Airport arrivalAirport;
+    @OneToOne
+    private Airport departureAirport;
 
     @ManyToOne
     City fromCity; //warszawa

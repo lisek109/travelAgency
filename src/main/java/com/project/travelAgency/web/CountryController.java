@@ -1,5 +1,6 @@
 package com.project.travelAgency.web;
 
+import com.project.travelAgency.entities.Continents;
 import com.project.travelAgency.entities.Country;
 import com.project.travelAgency.service.CountryService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,10 @@ public class CountryController {
     public ResponseEntity<Country> getById(@PathVariable final Long id) {
         return ResponseEntity.ok(countryService.findById(id));
     }
-
+    @GetMapping("/find/{continents}")
+    public ResponseEntity<List<Country>> findCountriesByContinent(@PathVariable final Continents continents) {
+        return ResponseEntity.ok(countryService.findCountriesByContinent(continents));
+    }
     @GetMapping
     public ResponseEntity<List<Country>> findAll() {
         return ResponseEntity.ok(countryService.findAll());

@@ -1,6 +1,7 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.City;
+import com.project.travelAgency.entities.Continents;
 import com.project.travelAgency.entities.Country;
 import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.CountryRepo;
@@ -26,6 +27,9 @@ public class CountryService {
     public Country findById(Long id) {
             return countryRepo.findById(id)
                     .orElseThrow(()-> new NoIdException("Country with given id not found"));
+    }
+    public List<Country> findCountriesByContinent (Continents continents){
+        return countryRepo.findCountriesByContinentsIs(continents);
     }
 
     public boolean deleteById(Long id) {
