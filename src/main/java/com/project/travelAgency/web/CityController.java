@@ -4,13 +4,14 @@ import com.project.travelAgency.entities.City;
 import com.project.travelAgency.service.CityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/destination/city")
+@RequestMapping("/travelagency/city")
 public class CityController {
 
     private final CityService cityService;
@@ -26,13 +27,14 @@ public class CityController {
         return ResponseEntity.ok(cityService.findAll());
     }
 
-
+    @Secured("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<City> save(@RequestBody final City city) {
 
         return ResponseEntity.ok(cityService.save(city));
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable final Long id) {
         return ResponseEntity.ok(cityService.deleteById(id));

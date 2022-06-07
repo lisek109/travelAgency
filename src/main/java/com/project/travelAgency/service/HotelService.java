@@ -5,6 +5,7 @@ import com.project.travelAgency.entities.Hotel;
 import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.HotelRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 public class HotelService {
 
     private final HotelRepo hotelRepo;
+    private final Hotel hotel = new Hotel();
+
 
     public Hotel save(Hotel hotel) {
         return hotelRepo.save(hotel);
@@ -22,6 +25,10 @@ public class HotelService {
     public Hotel findById(Long id) {
         return hotelRepo.findById(id)
                 .orElseThrow(()-> new NoIdException("Hotel with given id not found"));
+    }
+
+    public Hotel findByName(String name) {
+        return hotelRepo.findByName(name).orElse(hotel);
     }
 
     public List<Hotel> findAll() {
