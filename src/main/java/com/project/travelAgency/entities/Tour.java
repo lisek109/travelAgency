@@ -6,8 +6,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,19 +18,12 @@ public class Tour {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Short daysNumber;
-    private LocalDate departure;
-    private LocalDate arrival;
     @Enumerated(value = EnumType.STRING)
     private BoardType boardType;
     private Integer adultPrice;
     private Integer childPrice;
-    private Integer numberOfAdultSeatsLeft;
-    private Integer numberOfChildSeatsLeft;
+    private Integer numberOfAdultSeats;
+    private Integer numberOfChildSeats;
 
-    @ManyToOne
-    City fromCity; //warszawa
-
-   @ManyToOne
-   City toCity; // paryz, tokio
 
 }
