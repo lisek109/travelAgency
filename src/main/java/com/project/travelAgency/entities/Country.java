@@ -1,5 +1,6 @@
 package com.project.travelAgency.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -16,13 +17,16 @@ import java.util.Objects;
 public class Country {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String name;
+    @JsonIgnore
     @Enumerated(EnumType.STRING)
     private Continents continents;
     @OneToMany
+    @JsonIgnore
     @ToString.Exclude
     private List<City> cities;
 

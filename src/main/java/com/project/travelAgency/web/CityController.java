@@ -20,6 +20,10 @@ public class CityController {
     public ResponseEntity<City> getById(@PathVariable final Long id) {
         return ResponseEntity.ok(cityService.findById(id));
     }
+    @GetMapping("/find/{country}")
+    public  ResponseEntity<List<City>> findCitiesByCountry_Name(@PathVariable String country){
+        return ResponseEntity.ok(cityService.findCitiesByCountries_Name(country));
+    }
 
     @GetMapping
     public ResponseEntity<List<City>> findAll() {
