@@ -13,6 +13,7 @@ import java.util.List;
 public class CityService {
 
     private final CityRepo cityRepo;
+    private final CountryService countryService;
 
     public City save(City city) {
         return cityRepo.save(city);
@@ -30,6 +31,9 @@ public class CityService {
  //       return cityRepo.findCitiesByCountry_Name(country);
  //   }
 
+    public List<City> findCitiesByCountryName(String countryName) {
+        return countryService.findByName(countryName).getCities();
+    }
 
     public boolean deleteById(Long id) {
         cityRepo.delete(findById(id));
