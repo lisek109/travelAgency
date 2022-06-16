@@ -30,8 +30,7 @@ public class Tour {
     private Integer childPrice;
     private Integer numberOfAdultSeatsLeft;
     private Integer numberOfChildSeatsLeft;
-    @OneToOne
-    private Hotel hotel;
+
     @OneToOne
     private Airport arrivalAirport;
     @OneToOne

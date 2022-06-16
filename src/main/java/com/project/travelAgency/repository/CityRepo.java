@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CityRepo extends JpaRepository<City, Long> {
 
-    List<City> findCitiesByCountry_Name (String name); 
+   // List<City> findCitiesByCountry_Name (String name);
 }

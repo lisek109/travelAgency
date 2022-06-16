@@ -1,9 +1,6 @@
 package com.project.travelAgency.service;
 
-import com.project.travelAgency.entities.Airport;
-import com.project.travelAgency.entities.City;
-import com.project.travelAgency.entities.Hotel;
-import com.project.travelAgency.entities.Tour;
+import com.project.travelAgency.entities.*;
 import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.CityRepo;
 import org.junit.jupiter.api.Test;
@@ -30,8 +27,11 @@ class CityServiceTest {
     private static final List<Hotel> HOTELS = List.of(HOTEL, HOTEL);
     private static final List<Airport> AIRPORTS = List.of(AIRPORT, AIRPORT);
     private static final List<Tour> TOURS = Arrays.asList(new Tour());
+
     private static final City CITY = new City(1L, "Dublin",  AIRPORTS, HOTELS);
     private static final List<City> CITIES = List.of(CITY, CITY);
+    private static final Country POLAND = new Country(1L, "Poland", Continents.EUROPE, CITIES);
+
 
 
     @Mock

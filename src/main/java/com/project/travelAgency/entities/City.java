@@ -36,9 +36,9 @@ public class City {
     @OneToMany
     @JsonIgnore
     private List<Hotel> hotels;
-    @JsonIgnore
-    @ManyToOne//(mappedBy="country_id")
-    private Country country;
+   // @JsonIgnore
+   // @ManyToOne//(mappedBy="country_id")
+   // private Country country;
 
 
     @Override

@@ -33,7 +33,8 @@ class TourServiceTest {
     private static final LocalDate departureDate = LocalDate.of(2022, 07, 12);
     private static final LocalDate arrivalDate = LocalDate.of(2022, 07, 19);
     private static final Tour TOUR = new Tour
-            ( 2L, (short) 12, departureDate, arrivalDate,   1500, 1100, 34, 8, HOTEL, CITY, CITY2);
+            ( 2L, "wycieczka",  (short) 12, departureDate, arrivalDate,   1500,
+                    1100, 34, 8, AIRPORT, AIRPORT, HOTEL, CITY, CITY2);
 
     @Mock
     private TourRepo tourRepo;

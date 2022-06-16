@@ -26,9 +26,9 @@ public class CityService {
         return cityRepo.findById(id)
                 .orElseThrow(()-> new NoIdException("City with given id not found"));
     }
-    public List <City> findCitiesByCountries_Name (String country){
-        return cityRepo.findCitiesByCountry_Name(country);
-    }
+ //   public List <City> findCitiesByCountries_Name (String country){
+ //       return cityRepo.findCitiesByCountry_Name(country);
+ //   }
 
 
     public boolean deleteById(Long id) {
