@@ -31,10 +31,10 @@ public class City {
    // @OneToMany(mappedBy = "toCity")
    // private List<Tour> toTour;
     @OneToMany
-    @JsonIgnore
+    //@JsonIgnore
     private List<Airport> airports;
     @OneToMany
-    @JsonIgnore
+   // @JsonIgnore
     private List<Hotel> hotels;
    // @JsonIgnore
    // @ManyToOne//(mappedBy="country_id")

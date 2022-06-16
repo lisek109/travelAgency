@@ -24,6 +24,7 @@ public class CountryController {
     public ResponseEntity<List<Country>> findCountriesByContinent(@PathVariable final Continents continents) {
         return ResponseEntity.ok(countryService.findCountriesByContinent(continents));
     }
+
     @GetMapping
     public ResponseEntity<List<Country>> findAll() {
         return ResponseEntity.ok(countryService.findAll());
