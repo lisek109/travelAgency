@@ -1,8 +1,10 @@
 package com.project.travelAgency.service;
 
 
+import com.project.travelAgency.entities.City;
 import com.project.travelAgency.entities.Hotel;
 import com.project.travelAgency.exception.NoIdException;
+import com.project.travelAgency.exception.NoNameException;
 import com.project.travelAgency.repository.HotelRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
@@ -15,11 +17,11 @@ import java.util.List;
 public class HotelService {
 
     private final HotelRepo hotelRepo;
-    private final Hotel hotel = new Hotel();
-
+    private final CityService cityService;
 
     public Hotel save(Hotel hotel) {
-
+        City city = cityService.findByCityName(hotel.getCity().getName());
+        hotel.setCity(city);
         return hotelRepo.save(hotel);
     }
 
@@ -28,8 +30,12 @@ public class HotelService {
                 .orElseThrow(()-> new NoIdException("Hotel with given id not found"));
     }
 
+    public Hotel findByCityName(String cityName) {
+        return hotelRepo.findHotelByCityName(cityName).orElseThrow(() -> new NoNameException("Hotel not found"));
+    }
+
     public Hotel findByName(String name) {
-        return hotelRepo.findByName(name).orElse(hotel);
+        return hotelRepo.findByName(name).orElseThrow(() -> new NoNameException("Hotel not found"));
     }
 
     public List<Hotel> findAll() {
