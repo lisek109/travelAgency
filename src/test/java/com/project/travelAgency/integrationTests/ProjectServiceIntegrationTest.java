@@ -13,13 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringJUnitConfig(value = TestConfig.class)
 public class ProjectServiceIntegrationTest {
 
-    @Autowired
-    private HotelService hotelService;
-
-    @Test
-    void whenSavingHotel_thenOK() {
-        Hotel result = hotelService.save(new Hotel(3L, "Hilton", (short) 5));
-
-        assertNotNull(result);
-    }
+  //  @Autowired
+  //  private HotelService hotelService;
+//
+  //  @Test
+  //  void whenSavingHotel_thenOK() {
+  //      Hotel result = hotelService.save(new Hotel(3L, "Hilton", (short) 5));
+//
+  //      assertNotNull(result);
+  //  }
 }

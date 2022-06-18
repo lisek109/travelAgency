@@ -27,7 +27,7 @@ public class AirportController {
         return airportService.findAll();
     }
 
-    @Secured("ROLE_ADMIN")
+   // @Secured("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<Airport> save(@RequestBody Airport airport) {
         return ResponseEntity.ok(airportService.save(airport));

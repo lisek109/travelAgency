@@ -20,15 +20,25 @@ public class Country {
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true)
     private String name;
-    @JsonIgnore
-    @Enumerated(EnumType.STRING)
-    private Continents continents;
-    @OneToMany
-    @JsonIgnore
-    @ToString.Exclude
-    private List<City> cities;
+
+
+    private String continents;
+
+  //  @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
+  //  @JsonIgnore
+  //  @ToString.Exclude
+  //  private List<City> cities;
+
+
+
+
+    public Country(String name, String continents) {
+        this.continents = continents;
+        this.name = name;
+    }
 
     @Override
     public boolean equals(Object o) {

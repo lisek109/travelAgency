@@ -33,7 +33,7 @@ public class CityController {
         return ResponseEntity.ok(cityService.findAll());
     }
 
-    @Secured("ROLE_ADMIN")
+   // @Secured("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<City> save(@RequestBody final City city) {
 

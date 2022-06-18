@@ -31,7 +31,7 @@ public class CountryController {
     }
 
 
-    @Secured("ROLE_ADMIN")
+    //@Secured("ROLE_ADMIN")
     @PostMapping
     public ResponseEntity<Country> save(@RequestBody final Country country) {
         return ResponseEntity.ok(countryService.save(country));

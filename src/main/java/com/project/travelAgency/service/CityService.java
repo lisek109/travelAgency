@@ -1,6 +1,8 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.City;
+import com.project.travelAgency.entities.Country;
+import com.project.travelAgency.entities.Hotel;
 import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.CityRepo;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,12 @@ public class CityService {
     private final CountryService countryService;
 
     public City save(City city) {
+        Country country = countryService.findByName(city.getCountry().getName());
+
+        city.setCountry(country);
         return cityRepo.save(city);
+
+
     }
 
     public List<City> findAll() {
@@ -27,12 +34,10 @@ public class CityService {
         return cityRepo.findById(id)
                 .orElseThrow(()-> new NoIdException("City with given id not found"));
     }
- //   public List <City> findCitiesByCountries_Name (String country){
- //       return cityRepo.findCitiesByCountry_Name(country);
- //   }
+
 
     public List<City> findCitiesByCountryName(String countryName) {
-        return countryService.findByName(countryName).getCities();
+        return cityRepo.findCitiesByCountry_Name(countryName);
     }
 
     public boolean deleteById(Long id) {
