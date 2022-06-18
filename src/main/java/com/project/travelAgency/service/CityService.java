@@ -41,6 +41,7 @@ public class CityService {
     public City findByCityName(String cityName) {
         return cityRepo.findByName(cityName).orElseThrow(() -> new NoNameException("City not found"));
     }
+
     public boolean deleteById(Long id) {
         cityRepo.delete(findById(id));
         return true;

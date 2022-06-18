@@ -26,6 +26,7 @@ public class CountryController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<Country>> findAll() {
         return ResponseEntity.ok(countryService.findAll());
     }

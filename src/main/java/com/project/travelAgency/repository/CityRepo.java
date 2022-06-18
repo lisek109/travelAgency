@@ -12,4 +12,5 @@ public interface CityRepo extends JpaRepository<City, Long> {
     List<City> findCitiesByCountry_Name (String name);
    Optional<City> findByName(String n);
    Optional<City> findCityByCountryName (String countryName);
+
 }

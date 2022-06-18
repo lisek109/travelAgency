@@ -33,6 +33,7 @@ public class CountryService {
     public Country findByName(String name) {
         return countryRepo.findByName(name).orElseThrow(() -> new NoNameException("Country with given name not found"));
     }
+
     public List<Country> findCountriesByContinent (Continents continents){
         return countryRepo.findCountriesByContinentsIs(continents);
     }
