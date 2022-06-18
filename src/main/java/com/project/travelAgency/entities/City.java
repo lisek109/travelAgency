@@ -32,13 +32,11 @@ public class City {
    // @JsonIgnore
    // @OneToMany(mappedBy = "toCity")
    // private List<Tour> toTour;
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JsonIgnore
-    private List<Airport> airports;
-
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-   // @JsonIgnore
-    private List<Hotel> hotels;
+   // @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+   // private List<Airport> airports;
+//
+   // @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+   // private List<Hotel> hotels;
 
     //@JsonIgnore
     //@ManyToOne(targetEntity = Country.class)

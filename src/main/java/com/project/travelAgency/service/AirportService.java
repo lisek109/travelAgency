@@ -1,6 +1,7 @@
 package com.project.travelAgency.service;
 
 import com.project.travelAgency.entities.Airport;
+import com.project.travelAgency.entities.City;
 import com.project.travelAgency.exception.NoIdException;
 import com.project.travelAgency.repository.AirportRepo;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +14,11 @@ import java.util.List;
 public class AirportService {
 
     private final AirportRepo airportRepo;
+    public final CityService cityService;
 
     public Airport save(Airport airport) {
+        City city = cityService.findByCityName(airport.getCity().getName());
+        airport.setCity(city);
         return airportRepo.save(airport);
     }
 
