@@ -24,8 +24,6 @@ public class Tour {
     private Short daysNumber;
     private LocalDate departure;
     private LocalDate arrival;
-  //  @Enumerated(value = EnumType.STRING)
-  //  private BoardType boardType;
     private Integer adultPrice;
     private Integer childPrice;
     private Integer numberOfAdultSeatsLeft;
@@ -40,9 +38,9 @@ public class Tour {
     private Hotel hotel;
 
     @ManyToOne
-    private City fromCity; //warszawa
+    private City fromCity;
 
    @ManyToOne
-   City toCity; // paryz, tokio
+   City toCity;
 
 }

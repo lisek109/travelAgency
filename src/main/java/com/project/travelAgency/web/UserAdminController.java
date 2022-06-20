@@ -41,8 +41,6 @@ public class UserAdminController {
 
     @PatchMapping("/signup/{id}")
     public ResponseEntity<String> giveAdminRole( @PathVariable("id") Long id) {
-
-      //  userService.findById(id).getUserRoles().clear();
         User user = userService.findById(id);
         user.getUserRoles().add(ADMIN);
         userService.save(user);

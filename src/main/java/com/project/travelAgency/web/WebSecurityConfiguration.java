@@ -20,10 +20,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-   // public WebSecurityConfiguration(@Qualifier("userService") final UserService userService) {
-   //     this.userDetailsService = userService;
-   // }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
@@ -31,15 +27,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-       // http.authorizeRequests()
-               // .mvcMatchers(HttpMethod.GET, "/main/**")
-               // .permitAll()
-               // .anyRequest().authenticated()
-               // .and()
-               // .httpBasic()
-
-
-
                 http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.httpBasic()
@@ -54,10 +41,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 ;
     }
-
-  //  @Override
-  //  protected UserDetailsService userDetailsService() {
-  //      return userDetailsService;
-  //  }
-
 }

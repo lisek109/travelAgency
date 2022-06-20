@@ -19,7 +19,6 @@ public class UserService implements UserDetailsService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepo userRepo;
-    //private static final List<UserRole> USER= List.of(new UserRole(1L, "USER"));
     private static final UserRole USER = new UserRole(1L, "USER");
 
     @Override

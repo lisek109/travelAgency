@@ -25,24 +25,7 @@ public class City {
     @Column(unique = true)
     private String name;
 
-   // @JsonIgnore
-   // @OneToMany(mappedBy = "fromCity")
-   // private List<Tour> fromTour;
-//
-   // @JsonIgnore
-   // @OneToMany(mappedBy = "toCity")
-   // private List<Tour> toTour;
-   // @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-   // private List<Airport> airports;
-//
-   // @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-   // private List<Hotel> hotels;
-
-    //@JsonIgnore
-    //@ManyToOne(targetEntity = Country.class)
     @ManyToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "country_id")
-    //@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Country country;
 
 

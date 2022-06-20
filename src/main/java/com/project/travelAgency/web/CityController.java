@@ -35,6 +35,7 @@ public class CityController {
 
    // @Secured("ROLE_ADMIN")
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<City> save(@RequestBody final City city) {
 
         return ResponseEntity.ok(cityService.save(city));
